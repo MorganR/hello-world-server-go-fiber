@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "name": "Cloud Run: Run/Debug Locally",
+            "type": "cloudcode.cloudrun",
+            "request": "launch",
+            "build": {
+                "docker": {
+                    "path": "Dockerfile"
+                }
+            },
+            "image": "hello-world-server-go-fiber",
+            "service": {
+                "name": "hello-world-server-go-fiber",
+                "containerPort": 8080,
+                "env": [
+                    {
+                        "name": "GOMEMLIMIT",
+                        "value": "100MiB"
+                    }
+                ],
+                "resources": {
+                    "limits": {
+                        "cpu": 1,
+                        "memory": "128Mi"
+                    }
+                }
+            },
+            "target": {
+                "minikube": {}
+            },
+            "watch": true
+        }
+    ]
+}
