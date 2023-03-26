@@ -17,8 +17,12 @@ func main() {
 
 	app := fiber.New()
 
-	app.Use("/hello", compress.New())
-	app.Get("/hello", HelloWorldHandler)
+	app.Use("/strings", compress.New())
+	app.Get("/strings/hello", HelloWorldHandler)
+	app.Get("/strings/async-hello", AsyncHelloWorldHandler)
+	app.Get("/strings/lines", LinesHandler)
+
+	app.Get("/math/power-reciprocals-alt", PowerReciprocalsAltHandler)
 
 	fs := &fasthttp.FS{
 		Root:               "./",
@@ -26,8 +30,7 @@ func main() {
 		Compress:           true,
 		CompressBrotli:     true,
 		CompressedFileSuffixes: map[string]string{
-			"br":   ".br",
-			"gzip": ".gz",
+			"br": ".br",
 		},
 	}
 	fsh := fs.NewRequestHandler()
