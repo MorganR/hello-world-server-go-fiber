@@ -12,7 +12,7 @@ import (
 var nParam = "n"
 var nMustBeIntErrMsg = "query param n must be an integer"
 
-// LinesHandler outputs multiple lines of text based on the query parameter n.
+// LinesHandler outputs multiple lines of text based on the optional query parameter "n".
 func LinesHandler(ctx *fiber.Ctx) error {
 	nStr := ctx.Query(nParam, "")
 	n := 0

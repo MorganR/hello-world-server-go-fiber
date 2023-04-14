@@ -7,7 +7,7 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-// PowerReciprocalsAltHandler computes a convering series n times.
+// PowerReciprocalsAltHandler computes a converging series n times, using query parameter "n".
 func PowerReciprocalsAltHandler(ctx *fiber.Ctx) error {
 	nStr := ctx.Query(nParam, "")
 	n := 0
